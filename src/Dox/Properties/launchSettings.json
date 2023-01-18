@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Dox": {
+      "commandName": "Project",
+      "commandLineArgs": ".\\Dox.exe -f .\\Newtonsoft.Json.dll"
+    }
+  }
+}
