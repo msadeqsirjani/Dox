@@ -40,13 +40,20 @@ public static class DropboxClientFactory
             return new TokenResult(Settings.Default.UserToken, Settings.Default.RefreshToken);
         }
 
-        Console.WriteLine(
-            "You'll need to authorize this account with Dox; a browser window will now open asking you to log into Dropbox and allow the app. When you've done that, you'll be given an access key. Enter the key here and hit Enter:");
+        const string hint = """
+            You'll need to authorize this account with Dox
+            A browser window will now open asking you to log into Dropbox and allow the app.
+            When you've done that, you'll be given an access key
+            Enter the key here and hit Enter:
+            """;
 
-        var oauth2State = Guid.NewGuid().ToString("N");
+        Console.WriteLine(hint);
+
+        var authentication2State = Guid.NewGuid().ToString("N");
 
         // Pop open the authorization page in the default browser
-        var url = DropboxOAuth2Helper.GetAuthorizeUri(OAuthResponseType.Code, key, (Uri)null, oauth2State, tokenAccessType: TokenAccessType.Offline);
+        var url = DropboxOAuth2Helper.GetAuthorizeUri(OAuthResponseType.Code, key, null as Uri, authentication2State, tokenAccessType: TokenAccessType.Offline);
+
         Process.Start(url.ToString());
 
         // Wait for the user to enter the key
