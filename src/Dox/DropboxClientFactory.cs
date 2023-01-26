@@ -1,6 +1,4 @@
-﻿using Dox.Properties;
-
-namespace Dox;
+﻿namespace Dox;
 
 public static class DropboxClientFactory
 {
@@ -15,7 +13,7 @@ public static class DropboxClientFactory
     {
         var assembly = Assembly.GetExecutingAssembly();
 
-        await using var stream = assembly.GetManifestResourceStream("Dox.appSettings.json");
+        await using var stream = assembly.GetManifestResourceStream("Dox.app-data.txt");
         using var textStreamReader = new StreamReader(stream!);
         var key = (await textStreamReader.ReadLineAsync())?.Trim();
         var secret = (await textStreamReader.ReadLineAsync())?.Trim();
@@ -63,15 +61,5 @@ public static class DropboxClientFactory
         return new TokenResult(response.AccessToken, response.RefreshToken);
     }
 
-    private struct TokenResult
-    {
-        public readonly string UserToken;
-        public readonly string RefreshToken;
-
-        public TokenResult(string userToken, string refreshToken)
-        {
-            UserToken = userToken;
-            RefreshToken = refreshToken;
-        }
-    }
+    private record struct TokenResult(string UserToken, string RefreshToken);
 }
