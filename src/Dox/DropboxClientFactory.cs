@@ -20,7 +20,9 @@ public static class DropboxClientFactory
 
         var result = await GetAccessTokens(key, secret);
 
-        var config = new DropboxClientConfig("Dox")
+        const string applicationName = "msadeqsirjani - dox";
+
+        var config = new DropboxClientConfig(applicationName)
         {
             HttpClient = new HttpClient
             {
@@ -39,7 +41,7 @@ public static class DropboxClientFactory
         }
 
         Console.WriteLine(
-            "You'll need to authorize this account with PneumaticTube; a browser window will now open asking you to log into Dropbox and allow the app. When you've done that, you'll be given an access key. Enter the key here and hit Enter:");
+            "You'll need to authorize this account with Dox; a browser window will now open asking you to log into Dropbox and allow the app. When you've done that, you'll be given an access key. Enter the key here and hit Enter:");
 
         var oauth2State = Guid.NewGuid().ToString("N");
 
