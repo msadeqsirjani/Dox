@@ -2,7 +2,7 @@
   "profiles": {
     "Dox": {
       "commandName": "Project",
-      "commandLineArgs": ".\\Dox.exe -f .\\Newtonsoft.Json.dll"
+      "commandLineArgs": ".\\Dox.exe -f C:/Users/SQ-PC/Desktop/405.png"
     }
   }
 }

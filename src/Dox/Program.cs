@@ -30,8 +30,8 @@ public class Program
         string[] files;
 
         // Determine whether source is a file or directory
-        var attr = File.GetAttributes(source);
-        if (attr.HasFlag(FileAttributes.Directory))
+        var attributes = File.GetAttributes(source);
+        if (attributes.HasFlag(FileAttributes.Directory))
         {
             // TODO see if we like what this looks like for directories
             Output($"Uploading folder \"{source}\" to {(!string.IsNullOrEmpty(options.DropboxPath) ? options.DropboxPath : "Dropbox")}", options);
@@ -173,12 +173,12 @@ public class Program
     {
         Console.WriteLine("An error occurred and your file was not uploaded.");
 
-        var exitCode = ex.HandleAuthenticationException()
-                       ?? ex.HandleAccessException()
-                       ?? ex.HandleRateLimitException()
-                       ?? ex.HandleBadInputException()
-                       ?? ex.HandleHttpException()
-                       ?? ExitCode.UnknownError;
+        var exitCode = ex.HandleAuthenticationException() ??
+                       ex.HandleAccessException() ??
+                       ex.HandleRateLimitException() ??
+                       ex.HandleBadInputException() ??
+                       ex.HandleHttpException() ??
+                       ExitCode.UnknownError;
 
         if (exitCode == ExitCode.UnknownError)
         {

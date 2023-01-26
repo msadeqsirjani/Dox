@@ -5,15 +5,21 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <ApplicationIcon>dox.ico</ApplicationIcon>
+    <ApplicationIcon>dropbox-icon-64.ico</ApplicationIcon>
+    <PackageIcon></PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="app-data.txt" />
     <None Remove="appSettings.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="dox.ico" />
+    <Content Include="dropbox-icon-64.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="app-data.txt" />
   </ItemGroup>
 
   <ItemGroup>
