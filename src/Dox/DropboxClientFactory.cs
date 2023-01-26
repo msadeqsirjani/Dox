@@ -20,7 +20,7 @@ public static class DropboxClientFactory
 
         var result = await GetAccessTokens(key, secret);
 
-        const string applicationName = "msadeqsirjani - dox";
+        const string applicationName = "DOX";
 
         var config = new DropboxClientConfig(applicationName)
         {
@@ -54,7 +54,9 @@ public static class DropboxClientFactory
         // Pop open the authorization page in the default browser
         var url = DropboxOAuth2Helper.GetAuthorizeUri(OAuthResponseType.Code, key, null as Uri, authentication2State, tokenAccessType: TokenAccessType.Offline);
 
-        Process.Start(url.ToString());
+        var urlString = url.ToString().Replace("&", "^&");
+
+        Process.Start("cmd", $"/C start {urlString}");
 
         // Wait for the user to enter the key
         var token = Console.ReadLine();
