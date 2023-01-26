@@ -9,11 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="app-data.txt" />
     <None Remove="appSettings.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="dox.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="app-data.txt" />
   </ItemGroup>
 
   <ItemGroup>
