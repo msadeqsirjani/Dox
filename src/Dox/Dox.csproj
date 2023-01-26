@@ -17,12 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="appSettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="Dropbox.Api" Version="6.37.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
