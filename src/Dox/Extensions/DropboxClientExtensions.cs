@@ -8,7 +8,7 @@ public static class DropboxClientExtensions
     public const int DefaultChunkSizeInKilobytes = 1024;
     public const int DefaultTimeoutInSeconds = 100;
 
-    public static string CombinePath(string folder, string filename) => folder == "/" ? $"{folder}/" : $"{folder}/{filename}";
+    public static string CombinePath(string folder, string filename) => folder == "/" ? $"/{filename}" : $"{folder}/{filename}";
 
     public static async Task<FileMetadata?> Upload(this DropboxClient client, string folder, string filename, Stream stream)
     {
